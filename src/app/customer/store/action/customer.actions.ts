@@ -9,7 +9,7 @@ export const addCustomer = createAction(
 
 export class GetCustomers implements Action {
   public readonly type = ECustomerActions.GetCustomers;
-  constructor(public payload: ICustomer) {}
+  constructor() {}
 }
 
 export class AddCustomer implements Action {

@@ -8,7 +8,10 @@ import { EffectsModule } from '@ngrx/effects';
 import { effects } from './store';
 
 @NgModule({
-  declarations: [CustomerViewComponent, CustomerAddComponent],
+  declarations: [
+    CustomerViewComponent,
+    CustomerAddComponent
+  ],
   imports: [
     CommonModule,
     StoreModule.forFeature('store_customers', reducers),

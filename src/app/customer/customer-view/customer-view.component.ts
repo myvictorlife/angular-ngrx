@@ -19,7 +19,7 @@ export class CustomerViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.customers$ = this.store.select<any>(fromStore.getAllCustomers);
-    this.store.dispatch(new fromStore.LoadCustomers());
+    this.store.dispatch(new fromStore.LoadCustomers()); 
   }
 
 }

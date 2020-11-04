@@ -1,6 +1,5 @@
 import * as fromCustomer from '../action/customer.actions';
 import { ICustomerState, initialCustomerState } from '../state/customer.state';
-import { ICustomer } from 'src/app/models/customer';
 import { ECustomerActions } from '../types/action-types';
 
 export function reducer(
@@ -33,8 +32,7 @@ export function reducer(
     }
     case ECustomerActions.GetCustomers: {
       return {
-        ...state,
-        customers: [action.payload]
+        ...state
       }
     }
     default:
@@ -42,6 +40,6 @@ export function reducer(
   }
 }
 
+export const getCustomersEntities  = (state: ICustomerState) => state.customers; 
 export const getCustomersLoading = (state: ICustomerState) => state.loading;
 export const getCustomersLoaded = (state: ICustomerState) => state.loaded; 
-export const getCustomers  = (state: ICustomerState) => state.customers; 
