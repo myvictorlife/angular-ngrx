@@ -1,0 +1,11 @@
+<h4>List of Customers</h4>
+
+<div *ngIf="((customers$ | async)?.length)">
+  <div *ngFor="let customer of (customers$ | async) ; let i=index">
+    <span >{{i+1}}.</span> {{customer.name}}
+  </div>
+</div>
+
+customers: {{customers$ | async | json }}
+total: {{ (customers$ | async)?.length }}
+ngif: {{ ((customers$ | async)?.length) }}
