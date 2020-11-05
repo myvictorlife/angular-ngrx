@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ICustomer } from 'src/app/models/customer';
 import * as fromStore from '../store';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-customer-view',
@@ -11,15 +12,26 @@ import * as fromStore from '../store';
 })
 export class CustomerViewComponent implements OnInit {
 
-  customers$: Observable<ICustomer[]>;
+  customers$ = this.store.select<any>(fromStore.getAllCustomers);
+  // totalOfCustomers$ = this.store.pipe(select(fromStore.getTotalOfCustomers));
+  // loading$ = this.store.pipe(select(fromStore.getLoading));
+  // text$ = combineLatest(this.loading$, this.totalOfCustomers).pipe(
+  //   map(([loading, totalOfCustomers]) => {
+  //     if(loading) {
+  //       return 'Loading...';
+  //     } else {
+  //       return `Total of Customers:  ${totalOfCustomers}`; 
+  //     }
+  //   })
+  // )
+
   constructor(
     private store: Store<fromStore.CustomerState>
   ) {
   }
 
   ngOnInit(): void {
-    this.customers$ = this.store.select<any>(fromStore.getAllCustomers);
-    this.store.dispatch(new fromStore.LoadCustomers()); 
+    this.store.dispatch(new fromStore.LoadCustomers());
   }
 
 }

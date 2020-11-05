@@ -2,6 +2,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { CustomerAddComponent } from './customer-add.component';
 import { ICustomerState } from '../store/state/customer.state';
+import * as fromStore from '../store';
+import { ICustomer } from 'src/app/models/customer';
+import { ECustomerActions } from '../store/types/action-types';
 
 describe('CustomerAddComponent', () => {
   let component: CustomerAddComponent;
@@ -10,7 +13,7 @@ describe('CustomerAddComponent', () => {
   let store: MockStore;
   const initialState: ICustomerState = {
     customers: [{
-        name: 'Victor'
+        name: 'Customer #1'
     }],
     loaded: false,
     loading: false
@@ -38,5 +41,15 @@ describe('CustomerAddComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should dispatch a AddCustomer action addCustomer', () => {
+    spyOn(store, 'dispatch').and.callThrough();
+    const customer = new ICustomer();
+    customer.name = 'Unit Test';
+    component.addCustomer(customer.name);
+    
+    expect(store.dispatch).toHaveBeenCalledTimes(1);
+    expect(store.dispatch).toHaveBeenCalledWith(new fromStore.AddCustomer(customer));
   });
 });

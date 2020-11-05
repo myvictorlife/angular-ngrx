@@ -18,10 +18,7 @@ export class CustomerAddComponent implements OnInit {
   addCustomer(customerName: string) {
     const customer = new ICustomer();
     customer.name = customerName;
-    this._store.dispatch({
-      type: ECustomerActions.AddCustomer,
-      payload: customer
-    });
+    this._store.dispatch(new fromCustomer.AddCustomer(customer));
   }
 
   ngOnInit(): void {

@@ -2,7 +2,7 @@
 
 <div *ngIf="!((customers$ | async)?.length)">
   <div>
-    <span>User not found.</span>
+    <span>Customer not found.</span>
   </div>
 </div>
 
@@ -12,6 +12,4 @@
   </div>
 </div>
 
-customers: {{customers$ | async | json }}
-total: {{ (customers$ | async)?.length }}
-ngif: {{ ((customers$ | async)?.length) }}
+<!-- <div class="total">{{ text$ | async }}</div> -->

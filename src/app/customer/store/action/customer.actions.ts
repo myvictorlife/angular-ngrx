@@ -7,11 +7,6 @@ export const addCustomer = createAction(
   (customer: ICustomer) => ({customer})
 );
 
-export class GetCustomers implements Action {
-  public readonly type = ECustomerActions.GetCustomers;
-  constructor() {}
-}
-
 export class AddCustomer implements Action {
   public readonly type = ECustomerActions.AddCustomer;
   constructor(public payload: ICustomer) {
@@ -20,8 +15,6 @@ export class AddCustomer implements Action {
 
 export class LoadCustomers implements Action {
   public readonly type = ECustomerActions.LOAD_CUSTOMERS;
-  constructor() {
-  }
 }
 
 export class LoadCustomerSuccess implements Action {
@@ -37,6 +30,5 @@ export class LoadCustomerFail implements Action {
 }
 
 // action types
-export type CustomerActions = GetCustomers | AddCustomer |
-  LoadCustomers | LoadCustomerSuccess | LoadCustomerFail;
+export type CustomerActions = AddCustomer | LoadCustomers | LoadCustomerSuccess | LoadCustomerFail;
 

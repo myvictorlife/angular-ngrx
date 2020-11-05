@@ -1,27 +1,63 @@
-import { TestBed } from '@angular/core/testing';
-import { ICustomerState } from '../state/customer.state';
-import { MockStore, provideMockStore } from '@ngrx/store/testing';
+
+import {
+  AddCustomer,
+  LoadCustomers,
+  LoadCustomerSuccess,
+  LoadCustomerFail
+} from './customer.actions';
+import { ECustomerActions } from '../types/action-types';
+import { ICustomer } from 'src/app/models/customer';
+
+describe('AddCustomer', () => {
+  it('should create an action', () => {
+    const customer : ICustomer = {
+      name: 'Customer #1'
+    };
+    const action = new AddCustomer(customer);
+    expect({ ...action }).toEqual({
+      type: ECustomerActions.AddCustomer,
+      payload: customer
+    });
+  });
+});
 
 describe('loadCustomers', () => {
-
-  let store: MockStore;
-  const initialState: ICustomerState = {
-    customers: [{
-        name: 'Victor'
-    }],
-    loaded: false,
-    loading: false
-  }
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [],
-      providers: [
-        provideMockStore({ initialState }),
-      ]
-    });
-
-    store = TestBed.inject(MockStore);
+  it('should create an action', () => {
+    const action = new LoadCustomers();
+    expect({ ...action }).toEqual({ type: ECustomerActions.LOAD_CUSTOMERS });
   });
+});
 
+describe('LoadCustomerSuccess', () => {
+  it('should create an action', () => {
+    const payload: ICustomer[] = [
+      {
+        name: 'Customer #1',
+      },
+      {
+        name: 'Customer #2',
+      },
+    ];
+    const action = new LoadCustomerSuccess(payload);
+    expect({ ...action }).toEqual({
+      type: ECustomerActions.LOAD_CUSTOMERS_SUCCESS,
+      payload
+    });
+  });
+});
+
+
+describe('LoadCustomerFail', () => {
+  it('should create an action', () => {
+    const payload: ICustomer[] = [
+      {
+        name: 'Customer #1',
+      }
+    ];
+    const action = new LoadCustomerFail(payload);
+    expect({ ...action }).toEqual({
+      type: ECustomerActions.LOAD_CUSTOMERS_FAIL,
+      payload
+    });
+  });
 });

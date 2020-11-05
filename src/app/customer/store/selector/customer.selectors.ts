@@ -4,11 +4,11 @@ import { ActionReducerMap } from '@ngrx/store';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 
 export interface CustomerState {
-    customers: ICustomerState
+    data: ICustomerState
 }
 
 export const reducers: ActionReducerMap<CustomerState> = {
-    customers: fromCustomers.reducer,
+    data: fromCustomers.reducer,
 }
 
 export const getCustomersState = createFeatureSelector<CustomerState>(
@@ -17,7 +17,7 @@ export const getCustomersState = createFeatureSelector<CustomerState>(
 
 export const getCustomerState = createSelector(
     getCustomersState, 
-    (state: CustomerState) => state.customers
+    (state: CustomerState) => state.data
 );
 
 export const getAllCustomers = createSelector(

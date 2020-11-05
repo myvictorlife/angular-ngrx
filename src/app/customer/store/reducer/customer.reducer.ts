@@ -27,13 +27,7 @@ export function reducer(
       return {
         ... state,
         customers: [... state.customers, action.payload],
-        loading: true
       };
-    }
-    case ECustomerActions.GetCustomers: {
-      return {
-        ...state
-      }
     }
     default:
       return state;
@@ -42,4 +36,4 @@ export function reducer(
 
 export const getCustomersEntities  = (state: ICustomerState) => state.customers; 
 export const getCustomersLoading = (state: ICustomerState) => state.loading;
-export const getCustomersLoaded = (state: ICustomerState) => state.loaded; 
+export const getCustomersLoaded = (state: ICustomerState) => state.loaded;
