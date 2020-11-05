@@ -1,17 +1,38 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { CustomerViewComponent } from './customer/customer-view/customer-view.component';
+import { CustomerAddComponent } from './customer/customer-add/customer-add.component';
+import { provideMockStore, MockStore } from '@ngrx/store/testing';
+import { ICustomerState } from './customer/store/state/customer.state';
 
 describe('AppComponent', () => {
+
+  let store: MockStore;
+  const initialState: ICustomerState = {
+    customers: [{
+        name: 'Victor'
+    }],
+    loaded: false,
+    loading: false
+  }
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        CustomerViewComponent,
+        CustomerAddComponent
       ],
+      providers: [
+        provideMockStore({ initialState }),
+      ]
     }).compileComponents();
+
+    store = TestBed.inject(MockStore);
   });
 
   it('should create the app', () => {

@@ -16,7 +16,9 @@ describe('CustomerViewComponent', () => {
 
   const initialState: ICustomerState = {
     customers: [{
-        name: 'Victor Unit Test'
+        name: 'Victor'
+    },{
+      name: 'Maria'
     }],
     loaded: false,
     loading: false
@@ -42,6 +44,10 @@ describe('CustomerViewComponent', () => {
       initialState.customers
     )
     fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
   });
 
   it('should create', () => {

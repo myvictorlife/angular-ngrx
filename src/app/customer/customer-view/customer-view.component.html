@@ -1,5 +1,11 @@
 <h4>List of Customers</h4>
 
+<div *ngIf="!((customers$ | async)?.length)">
+  <div>
+    <span>User not found.</span>
+  </div>
+</div>
+
 <div *ngIf="((customers$ | async)?.length)">
   <div *ngFor="let customer of (customers$ | async) ; let i=index">
     <span >{{i+1}}.</span> {{customer.name}}
