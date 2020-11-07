@@ -6,20 +6,23 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/selector';
 import { EffectsModule } from '@ngrx/effects';
 import { effects } from './store';
+import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 
 @NgModule({
   declarations: [
     CustomerViewComponent,
-    CustomerAddComponent
+    CustomerAddComponent,
+    CustomerDetailsComponent
   ],
   imports: [
     CommonModule,
     StoreModule.forFeature('store_customers', reducers),
-    EffectsModule.forFeature(effects)
+    EffectsModule.forFeature(effects),
   ],
   exports: [
     CustomerViewComponent,
-    CustomerAddComponent
+    CustomerAddComponent,
+    CustomerDetailsComponent
   ]
 })
 export class CustomerModule { }

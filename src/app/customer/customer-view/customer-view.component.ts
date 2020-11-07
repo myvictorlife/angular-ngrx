@@ -3,7 +3,7 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ICustomer } from 'src/app/models/customer';
 import * as fromStore from '../store';
-import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer-view',
@@ -26,12 +26,17 @@ export class CustomerViewComponent implements OnInit {
   // )
 
   constructor(
-    private store: Store<fromStore.CustomerState>
+    private store: Store<fromStore.CustomerState>,
+    private router: Router
   ) {
   }
 
   ngOnInit(): void {
     this.store.dispatch(new fromStore.LoadCustomers());
+  }
+
+  redirectToCustomerDetails(customer: ICustomer) {
+    this.router.navigate(['Victor']);
   }
 
 }

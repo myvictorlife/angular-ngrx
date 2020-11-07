@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ICustomer } from '../models/customer';
 import { catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class CustomersService {
 
   getCustomers(): Observable<ICustomer[]> {
     return this.http
-      .get<ICustomer[]>('https://run.mocky.io/v3/f63481e1-c003-466a-bc35-d64925d074fb')
+      .get<ICustomer[]>(environment.API_URL)
       .pipe(catchError((error: any) => Observable.throw(error.json())));
   }
 

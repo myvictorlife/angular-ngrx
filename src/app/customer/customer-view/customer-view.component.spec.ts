@@ -5,6 +5,7 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { MemoizedSelector, Store } from '@ngrx/store';
 import * as fromStore from '../store';
 import { ICustomer } from 'src/app/models/customer';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('CustomerViewComponent', () => {
   let component: CustomerViewComponent;
@@ -23,11 +24,14 @@ describe('CustomerViewComponent', () => {
       loaded: false,
       loading: false
     }
-  } as fromStore.CustomerState;
+  } as fromStore.CustomerState; 
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ CustomerViewComponent ],
+      imports: [
+        RouterTestingModule,
+      ],
       providers: [
         provideMockStore({ initialState: initialCustomerState }),
       ]

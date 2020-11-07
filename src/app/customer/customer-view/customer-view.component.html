@@ -8,7 +8,9 @@
 
 <div *ngIf="((customers$ | async)?.length)">
   <div *ngFor="let customer of (customers$ | async) ; let i=index">
-    <span >{{i+1}}.</span> {{customer.name}}
+    <button (click)="redirectToCustomerDetails(customer)">
+      <span >{{i+1}}.</span> {{customer.name}}
+    </button>
   </div>
 </div>
 

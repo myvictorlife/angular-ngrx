@@ -7,8 +7,18 @@ import {
 } from './customer.actions';
 import { ECustomerActions } from '../types/action-types';
 import { ICustomer } from 'src/app/models/customer';
-
+import { TestBed } from '@angular/core/testing';
+import { provideMockStore } from '@ngrx/store/testing';
 describe('AddCustomer', () => {
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [
+        provideMockStore({ initialState: [] })
+      ]
+    });
+  });
+
   it('should create an action', () => {
     const customer : ICustomer = {
       name: 'Customer #1'

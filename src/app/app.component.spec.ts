@@ -4,18 +4,11 @@ import { AppComponent } from './app.component';
 import { CustomerViewComponent } from './customer/customer-view/customer-view.component';
 import { CustomerAddComponent } from './customer/customer-add/customer-add.component';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
-import { ICustomerState } from './customer/store/state/customer.state';
+import { initialCustomerState } from './customer/store/state/customer.state';
 
 describe('AppComponent', () => {
 
   let store: MockStore;
-  const initialState: ICustomerState = {
-    customers: [{
-        name: 'Victor'
-    }],
-    loaded: false,
-    loading: false
-  }
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -28,7 +21,7 @@ describe('AppComponent', () => {
         CustomerAddComponent
       ],
       providers: [
-        provideMockStore({ initialState }),
+        provideMockStore({ initialState: initialCustomerState }),
       ]
     }).compileComponents();
 

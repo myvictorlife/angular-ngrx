@@ -29,11 +29,20 @@ export function reducer(
         customers: [... state.customers, action.payload],
       };
     }
+    // case ECustomerActions.GET_CUSTOMER_BY_NAME: {
+    //   const payload = action.payload;
+    //   const customer = state.customers.find(
+    //     customer => customer.name === payload.name);
+    //   return {
+    //     ... state,
+    //     customers: [customer],
+    //   };
+    // }
     default:
       return state;
   }
 }
 
-export const getCustomersEntities  = (state: ICustomerState) => state.customers; 
+export const getCustomersEntities  = (state: ICustomerState) => state.customers;
 export const getCustomersLoading = (state: ICustomerState) => state.loading;
 export const getCustomersLoaded = (state: ICustomerState) => state.loaded;
